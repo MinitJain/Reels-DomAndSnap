@@ -190,7 +190,6 @@ allReels.addEventListener("click", function (dets) {
     addData();
   }
 
-  // FOLLOW (kept same style)
   if (dets.target.classList.contains("follow")) {
     if (!reels[dets.target.id].isFollowed) {
       reels[dets.target.id].isFollowed = true;
@@ -201,13 +200,11 @@ allReels.addEventListener("click", function (dets) {
     console.log(dets.target.id);
   }
 
-  // SPEAKER — minimal change: use closest() and toggle actual <video> first
   const speakerDiv = dets.target.closest(".speaker");
   if (speakerDiv) {
     var idx = Number(speakerDiv.id);
     if (!Number.isFinite(idx)) return;
 
-    // toggle the real video element first for immediate audio change
     var reelEl = speakerDiv.closest(".reel");
     if (reelEl) {
       var video = reelEl.querySelector("video");
@@ -218,7 +215,6 @@ allReels.addEventListener("click", function (dets) {
       }
     }
 
-    // re-render to update icons / markup (keeps your current flow)
     addData();
     console.log("speaker clicked", idx);
   }
